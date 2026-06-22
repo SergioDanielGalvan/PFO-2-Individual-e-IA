@@ -1,2 +1,132 @@
-# PFO-2-Individual-e-IA
-Práctica Formativa Obligatoria 2 - Individual  Prompt Engineering en Agentes de IA 
+# PFO 2 - Prompt Engineering en Agentes de IA
+
+Proyecto individual para la Práctica Formativa Obligatoria 2. El despliegue unificado inicia en una portada con tres accesos: prompt utilizado, landing del primer agente y landing del segundo agente.
+
+## Datos del estudiante
+
+- Nombre y apellido: Sergio Daniel Galván
+- Comisión: D
+- Materia: Front-End
+- Práctica: PFO 2 - Prompt Engineering en Agentes de IA
+
+## Deploy unificado
+
+- Link de Vercel: Completar cuando el proyecto esté publicado
+
+## Agentes utilizados
+
+- Agente 1: Claude
+- Modelo utilizado en Agente 1: Sonnet 4
+- Agente 2: Codex (OpenAI)
+- Modelo utilizado en Agente 2: GPT-5
+- Agente 3: Claude
+- Modelo utilizado en Agente 3: Opus 4.8 de 1M de tokens y modo ultracode
+
+
+## Estructura del proyecto
+
+- index.html: portada principal con los tres accesos solicitados.
+- prompt.txt: texto plano del prompt utilizado.
+- landing.html: Landing Page de Mundo Gaming generada para la entrega.
+
+## Prompt exacto utilizado
+
+`	ext
+[Rol y Contexto]
+Eres un experto desarrollador full-stack y diseñador UI/UX con más de 10 años de experiencia. Te especializas en generar código front-end limpio, moderno y completamente autónomo. Tu misión es crear una Landing Page profesional para una empresa llamada "Mundo Gaming", dedicada a la reventa de hardware de alto rendimiento para gaming y e-sports.
+
+[Objetivo Principal]
+Debes generar el código completo de un proyecto web que consta de DOS páginas HTML interconectadas. No debes dejar ningún archivo incompleto ni usar placeholders sin contenido real. Todo el código debe estar listo para ejecutarse directamente en un navegador.
+
+[Requisitos Técnicos Obligatorios]
+- Usa un único archivo index.html para la Portada de acceso.
+- Usa un único archivo landing.html para la Landing Page de Mundo Gaming.
+- Estilos: Utiliza Tailwind CSS vía CDN (https://cdn.tailwindcss.com) combinado con CSS personalizado dentro de una etiqueta <style>.
+- Iconos: Utiliza Font Awesome vía CDN (https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css).
+- Fuente: Utiliza la familia 'Inter' o 'Poppins' desde Google Fonts.
+- Todo el contenido debe estar en ESPAÑOL (Castellano).
+
+[Instrucciones Detalladas - Página 1: Portada (index.html)]
+Esta página es el punto de entrada del proyecto. Debe tener un diseño impactante con temática tecnológica/gamer (fondos oscuros, acentos en neón cyan o magenta). Debe contener:
+1. Un título principal: "Evaluación de Prompt Engineering - Mundo Gaming".
+2. Un subtítulo: "Landing Page generada por IA para Reseller de Hardware".
+3. Exactamente TRES tarjetas (cards) grandes, centradas y cliqueables, con los siguientes enlaces (usar rutas relativas):
+   - Tarjeta 1: Título "Ver el Prompt Utilizado". Al hacer clic, debe abrir un archivo llamado prompt.txt.
+   - Tarjeta 2: Título "Landing Page - Agente 1 (Cursor)". Al hacer clic, debe redirigir a landing.html.
+   - Tarjeta 3: Título "Landing Page - Agente 2 (Codex)". Al hacer clic, debe redirigir a landing.html.
+
+[Instrucciones Detalladas - Página 2: Landing Page (landing.html)]
+Esta es la página principal de Mundo Gaming. Debe contener TODAS las siguientes secciones, en orden:
+
+1. Cabecera (Header):
+   - Logo a la izquierda con el texto "Mundo Gaming" en tipografía gruesa.
+   - Menú de navegación horizontal: "Inicio", "Productos", "Servicios", "Nosotros", "Contacto".
+   - Botón destacado a la derecha: "Cotiza Ahora".
+
+2. Sección Hero:
+   - Título impactante: "El Poder que Necesitas para Ganar".
+   - Subtítulo: "Los mejores componentes GPU, CPU y periféricos para tu setup competitivo. Distribuidores oficiales de las marcas top."
+   - Botón CTA principal: "Explorar Catálogo" (con efecto hover de escala y sombra).
+   - Fondo con un sutil patrón de cuadrícula o partículas (usar CSS puro, sin librerías externas).
+
+3. Descripción / Sobre Nosotros:
+   - Título: "Sobre Mundo Gaming".
+   - Texto: "Somos un equipo de entusiastas del gaming y la tecnología. Con más de 8 años en el mercado, conectamos a jugadores y creadores de contenido con el hardware más confiable y de mayor rendimiento. Garantizamos productos 100% originales y soporte técnico especializado."
+
+4. Sección de Servicios / Características principales:
+   - Mostrar en 3 columnas (grid).
+   - Característica 1: Icono de microchip, título "GPUs de Última Generación", texto "RTX 4000 y Radeon RX 7000, stock garantizado."
+   - Característica 2: Icono de engranaje, título "Armado de PCs Personalizadas", texto "Asesoramos tu compra para maximizar FPS y rendimiento."
+   - Característica 3: Icono de camión, título "Envíos a Todo el País", texto "Logística exprés con seguimiento en tiempo real."
+
+5. Testimonios / Reseñas:
+   - Mostrar en 2 columnas.
+   - Testimonio 1: "Mundo Gaming me ayudó a armar mi PC para streaming. Llegó todo en perfecto estado y el rendimiento es brutal." — Carlos M., Streamer.
+   - Testimonio 2: "Los precios son imbatibles y la atención al cliente es de primera. Mi nuevo setup corre todo en Ultra." — Laura G., Gamer Profesional.
+
+6. Formulario de Contacto (solo maquetado visual, sin backend):
+   - Título: "¿Necesitas una Cotización Personalizada?"
+   - Campos: "Nombre Completo" (text), "Correo Electrónico" (email), "Teléfono" (text), "Mensaje / Requerimiento" (textarea).
+   - Botón de envío: "Enviar Mensaje".
+
+7. Pie de página (Footer):
+   - Texto de copyright: "© 2026 Mundo Gaming. Todos los derechos reservados."
+   - Enlaces a redes sociales con íconos de Font Awesome: Facebook, Instagram, Twitter/X, YouTube.
+
+[Restricciones Estrictas de Diseño y Código]
+- La paleta de colores debe ser: Fondo principal #0b0d15, tarjetas #1a1d2e, texto principal #e2e8f0, acentos #00f0ff (cyan) y #ff00d4 (magenta).
+- El sitio debe ser 100% responsive (mobile-first). En móviles, el menú debe colapsar.
+- Todos los botones deben tener transiciones suaves (hover: escala 1.05 y cambio de sombra).
+- El código debe estar completamente comentado en español, indicando cada sección (<!-- Header -->, <!-- Hero -->, etc.).
+- No debes incluir imágenes locales; usa colores y estilos CSS para reemplazar cualquier gráfico.
+
+[Formato de Salida Exigido]
+Debes generar el código completo de index.html y landing.html, funcionales y listos para desplegarse en Vercel o cualquier servidor estático.
+
+`
+
+## Capturas de pantalla
+
+Agregar aquí las capturas de ambos sitios web generados antes de la entrega final.
+
+### Landing Page - Agente 1 (Claude)
+
+Pendiente: insertar captura de la versión generada con Claude.
+
+### Landing Page - Agente 2 (Codex)
+
+Pendiente: insertar captura de la versión generada con Codex.
+
+### Landing Page - Agente 3 (Clause opus 4.8)
+
+ opus 4.8 de 1M de tokens y modo ultracode
+
+## Checklist de requisitos
+
+- Portada con tres accesos directos.
+- Link al prompt en texto plano.
+- Landing Page con Header, Hero, Sobre Nosotros, Servicios, Testimonios, Formulario y Footer.
+- Diseño responsive con Tailwind CSS vía CDN.
+- Iconos con Font Awesome vía CDN.
+- Paleta gamer oscura con acentos cyan y magenta.
+- Contenido en español.
