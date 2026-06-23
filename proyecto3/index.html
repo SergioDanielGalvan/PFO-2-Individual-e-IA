@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ============================================================= -->
+  <!-- PORTADA DE ACCESO - Evaluación de Prompt Engineering           -->
+  <!-- Proyecto: Mundo Gaming (Reseller de Hardware)                  -->
+  <!-- ============================================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portada de acceso a la evaluación de Prompt Engineering del proyecto Mundo Gaming." />
+  <title>Portada · Evaluación de Prompt Engineering - Mundo Gaming</title>
+
+  <!-- Tailwind CSS vía CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome vía CDN (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Tipografía: Inter (cuerpo) + Poppins (titulares) desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Configuración de Tailwind: paleta de marca y fuentes -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fondo: '#0b0d15',      // Fondo principal
+            tarjeta: '#1a1d2e',    // Superficie de tarjetas
+            texto: '#e2e8f0',      // Texto principal
+            cyan: '#00f0ff',       // Acento cyan (neón)
+            magenta: '#ff00d4',    // Acento magenta (neón)
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Poppins', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- ===================== CSS personalizado ===================== -->
+  <style>
+    /* Suavizado de scroll y base */
+    html { scroll-behavior: smooth; }
+    body { background-color: #0b0d15; }
+
+    /* Patrón de cuadrícula tecnológica de fondo (CSS puro) */
+    .fondo-cuadricula {
+      background-color: #0b0d15;
+      background-image:
+        linear-gradient(rgba(0, 240, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 212, 0.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    /* Resplandores radiales de neón detrás del contenido */
+    .resplandor::before,
+    .resplandor::after {
+      content: "";
+      position: fixed;
+      width: 55vw;
+      height: 55vw;
+      border-radius: 9999px;
+      filter: blur(120px);
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .resplandor::before { background: #00f0ff; top: -15vw; left: -10vw; }
+    .resplandor::after  { background: #ff00d4; bottom: -15vw; right: -10vw; }
+
+    /* Texto con degradado neón cyan -> magenta */
+    .texto-neon {
+      background: linear-gradient(90deg, #00f0ff, #ff00d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Borde de tarjeta con degradado animado al pasar el cursor */
+    .tarjeta-acceso {
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tarjeta-acceso::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(0,240,255,0.5), rgba(255,0,212,0.5));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+    .tarjeta-acceso:hover { transform: scale(1.05); }
+    .tarjeta-acceso:hover::after { opacity: 1; }
+
+    /* Sombra de neón reutilizable para hover (botones/tarjetas) */
+    .hover-neon-cyan:hover { box-shadow: 0 0 25px rgba(0, 240, 255, 0.45); }
+    .hover-neon-magenta:hover { box-shadow: 0 0 25px rgba(255, 0, 212, 0.45); }
+
+    /* Animación sutil de entrada */
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .aparecer { animation: aparecer 0.7s ease both; }
+  </style>
+</head>
+
+<body class="fondo-cuadricula resplandor font-sans text-texto min-h-screen flex flex-col">
+
+  <!-- ===================== Contenido principal ===================== -->
+  <main class="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-16">
+
+    <!-- Etiqueta superior / badge -->
+    <span class="aparecer inline-flex items-center gap-2 rounded-full border border-cyan/40 bg-cyan/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan">
+      <i class="fa-solid fa-microchip"></i> Práctica Formativa Obligatoria 2
+    </span>
+
+    <!-- Título principal -->
+    <h1 class="aparecer mt-6 max-w-4xl text-center font-display text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+      Evaluación de <span class="texto-neon">Prompt Engineering</span> - Mundo Gaming
+    </h1>
+
+    <!-- Subtítulo -->
+    <p class="aparecer mt-5 max-w-2xl text-center text-base text-texto/70 sm:text-lg">
+      Landing Page generada por IA para Reseller de Hardware
+    </p>
+
+    <!-- ===================== Tres tarjetas de acceso ===================== -->
+    <section class="mt-14 grid w-full max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+
+      <!-- Tarjeta 1: Prompt utilizado -->
+      <a href="prompt.txt"
+         class="tarjeta-acceso aparecer group flex flex-col items-center rounded-2xl bg-tarjeta p-8 text-center shadow-lg ring-1 ring-white/5 hover-neon-cyan">
+        <span class="flex h-16 w-16 items-center justify-center rounded-xl bg-cyan/10 text-2xl text-cyan transition-transform duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-file-code"></i>
+        </span>
+        <h2 class="mt-5 font-display text-xl font-bold text-texto">Ver el Prompt Utilizado</h2>
+        <p class="mt-2 text-sm text-texto/60">
+          Abre el texto plano del prompt inicial diseñado para los agentes de IA.
+        </p>
+        <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan">
+          Abrir prompt.txt <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </a>
+
+      <!-- Tarjeta 2: Agente 1 (Codex) -->
+      <a href="../proyecto2/landing.html"
+         class="tarjeta-acceso aparecer group flex flex-col items-center rounded-2xl bg-tarjeta p-8 text-center shadow-lg ring-1 ring-white/5 hover-neon-magenta">
+        <span class="flex h-16 w-16 items-center justify-center rounded-xl bg-magenta/10 text-2xl text-magenta transition-transform duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-i-cursor"></i>
+        </span>
+        <h2 class="mt-5 font-display text-xl font-bold text-texto">Landing Page - Agente 1 <span class="text-magenta">(Codex GPT-5.5)</span></h2>
+        <p class="mt-2 text-sm text-texto/60">
+          Resultado generado de forma autónoma por el primer agente de desarrollo.
+        </p>
+        <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-magenta">
+          Ver landing <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </a>
+
+      <!-- Tarjeta 3: Agente 2 (Claude) -->
+      <a href="landing.html"
+         class="tarjeta-acceso aparecer group flex flex-col items-center rounded-2xl bg-tarjeta p-8 text-center shadow-lg ring-1 ring-white/5 hover-neon-cyan">
+        <span class="flex h-16 w-16 items-center justify-center rounded-xl bg-cyan/10 text-2xl text-cyan transition-transform duration-300 group-hover:scale-110">
+          <i class="fa-solid fa-robot"></i>
+        </span>
+        <h2 class="mt-5 font-display text-xl font-bold text-texto">Landing Page - Agente 2 <span class="text-cyan">(Claude 4.8 Opus Ultracode)</span></h2>
+        <p class="mt-2 text-sm text-texto/60">
+          Resultado generado de forma autónoma por el segundo agente de desarrollo.
+        </p>
+        <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan">
+          Ver landing <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </a>
+
+    </section>
+  </main>
+
+  <!-- ===================== Pie de página ===================== -->
+  <footer class="relative z-10 border-t border-white/5 py-6 text-center text-sm text-texto/50">
+    © 2026 Mundo Gaming · Evaluación de Prompt Engineering en Agentes de IA
+  </footer>
+
+</body>
+</html>

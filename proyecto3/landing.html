@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ============================================================= -->
+  <!-- LANDING PAGE - Mundo Gaming                                    -->
+  <!-- Reseller de hardware de alto rendimiento para gaming/e-sports  -->
+  <!-- ============================================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mundo Gaming: los mejores componentes GPU, CPU y periféricos para tu setup competitivo. Distribuidores oficiales de las marcas top." />
+  <title>Mundo Gaming · Hardware de Alto Rendimiento</title>
+
+  <!-- Tailwind CSS vía CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome vía CDN (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Tipografía: Inter (cuerpo) + Poppins (titulares) desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Configuración de Tailwind: paleta de marca y fuentes -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fondo: '#0b0d15',      // Fondo principal
+            tarjeta: '#1a1d2e',    // Superficie de tarjetas
+            texto: '#e2e8f0',      // Texto principal
+            cyan: '#00f0ff',       // Acento cyan (neón)
+            magenta: '#ff00d4',    // Acento magenta (neón)
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Poppins', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- ===================== CSS personalizado ===================== -->
+  <style>
+    /* Base y suavizado de scroll */
+    html { scroll-behavior: smooth; }
+    body { background-color: #0b0d15; }
+
+    /* Texto con degradado neón cyan -> magenta */
+    .texto-neon {
+      background: linear-gradient(90deg, #00f0ff, #ff00d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Patrón de cuadrícula tecnológica + resplandores para el Hero (CSS puro) */
+    .hero-fondo {
+      position: relative;
+      background-color: #0b0d15;
+      background-image:
+        linear-gradient(rgba(0, 240, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 212, 0.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      overflow: hidden;
+    }
+    /* Resplandores radiales de neón */
+    .hero-fondo::before,
+    .hero-fondo::after {
+      content: "";
+      position: absolute;
+      width: 50vw;
+      height: 50vw;
+      border-radius: 9999px;
+      filter: blur(130px);
+      opacity: 0.22;
+      pointer-events: none;
+    }
+    .hero-fondo::before { background: #00f0ff; top: -12vw; left: -8vw; }
+    .hero-fondo::after  { background: #ff00d4; bottom: -16vw; right: -8vw; }
+
+    /* Partículas flotantes generadas con CSS puro (sin librerías) */
+    .particula {
+      position: absolute;
+      border-radius: 9999px;
+      opacity: 0.6;
+      animation: flotar 9s ease-in-out infinite;
+    }
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+      50%      { transform: translateY(-28px) translateX(10px); opacity: 0.9; }
+    }
+
+    /* Sombras de neón reutilizables para hover */
+    .hover-neon-cyan:hover    { box-shadow: 0 0 28px rgba(0, 240, 255, 0.5); }
+    .hover-neon-magenta:hover { box-shadow: 0 0 28px rgba(255, 0, 212, 0.5); }
+
+    /* Botones: transición suave + escala 1.05 al pasar el cursor */
+    .btn-base { transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease; }
+    .btn-base:hover { transform: scale(1.05); }
+
+    /* Tarjetas con borde degradado al pasar el cursor */
+    .tarjeta {
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tarjeta::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(0,240,255,0.5), rgba(255,0,212,0.5));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.35;
+      transition: opacity 0.3s ease;
+    }
+    .tarjeta:hover { transform: translateY(-6px); }
+    .tarjeta:hover::after { opacity: 1; }
+
+    /* Comillas decorativas en testimonios */
+    .testimonio::before {
+      content: "\201C";
+      font-family: Georgia, serif;
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(0, 240, 255, 0.35);
+      display: block;
+      margin-bottom: -0.5rem;
+    }
+  </style>
+</head>
+
+<body class="bg-fondo font-sans text-texto antialiased">
+
+  <!-- ===================== Header (Cabecera) ===================== -->
+  <header class="sticky top-0 z-50 border-b border-white/5 bg-fondo/80 backdrop-blur-md">
+    <div class="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+
+      <!-- Logo a la izquierda -->
+      <a href="#inicio" class="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight">
+        <i class="fa-solid fa-gamepad text-cyan"></i>
+        <span class="text-texto">Mundo<span class="texto-neon">Gaming</span></span>
+      </a>
+
+      <!-- Checkbox oculto que controla el menú móvil (técnica CSS pura) -->
+      <input type="checkbox" id="menu-movil" class="peer hidden" />
+
+      <!-- Navegación horizontal (escritorio) -->
+      <nav class="hidden items-center gap-8 text-sm font-medium md:flex">
+        <a href="#inicio"      class="text-texto/80 transition-colors hover:text-cyan">Inicio</a>
+        <a href="#servicios"   class="text-texto/80 transition-colors hover:text-cyan">Productos</a>
+        <a href="#servicios"   class="text-texto/80 transition-colors hover:text-cyan">Servicios</a>
+        <a href="#nosotros"    class="text-texto/80 transition-colors hover:text-cyan">Nosotros</a>
+        <a href="#contacto"    class="text-texto/80 transition-colors hover:text-cyan">Contacto</a>
+      </nav>
+
+      <!-- Botón destacado a la derecha (escritorio) -->
+      <a href="#contacto"
+         class="btn-base hover-neon-cyan hidden rounded-lg bg-cyan px-5 py-2.5 text-sm font-bold text-fondo md:inline-flex">
+        Cotiza Ahora
+      </a>
+
+      <!-- Botón hamburguesa (solo móvil) -->
+      <label for="menu-movil" class="cursor-pointer text-2xl text-cyan md:hidden" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+
+      <!-- Menú desplegable móvil (se muestra al activar el checkbox) -->
+      <nav class="absolute left-0 top-full hidden w-full flex-col gap-1 border-b border-white/5 bg-tarjeta p-4 text-sm font-medium peer-checked:flex md:hidden">
+        <a href="#inicio"    class="rounded-lg px-3 py-2 text-texto/80 transition-colors hover:bg-white/5 hover:text-cyan">Inicio</a>
+        <a href="#servicios" class="rounded-lg px-3 py-2 text-texto/80 transition-colors hover:bg-white/5 hover:text-cyan">Productos</a>
+        <a href="#servicios" class="rounded-lg px-3 py-2 text-texto/80 transition-colors hover:bg-white/5 hover:text-cyan">Servicios</a>
+        <a href="#nosotros"  class="rounded-lg px-3 py-2 text-texto/80 transition-colors hover:bg-white/5 hover:text-cyan">Nosotros</a>
+        <a href="#contacto"  class="rounded-lg px-3 py-2 text-texto/80 transition-colors hover:bg-white/5 hover:text-cyan">Contacto</a>
+        <a href="#contacto"  class="btn-base hover-neon-cyan mt-2 rounded-lg bg-cyan px-3 py-2 text-center font-bold text-fondo">Cotiza Ahora</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== Hero ===================== -->
+    <section id="inicio" class="hero-fondo flex min-h-[90vh] items-center px-6 py-24">
+      <!-- Partículas decorativas (CSS puro) -->
+      <span class="particula" style="width:10px;height:10px;background:#00f0ff;top:18%;left:12%;animation-delay:0s;"></span>
+      <span class="particula" style="width:6px;height:6px;background:#ff00d4;top:30%;left:78%;animation-delay:1.5s;"></span>
+      <span class="particula" style="width:14px;height:14px;background:#00f0ff;top:65%;left:22%;animation-delay:0.8s;"></span>
+      <span class="particula" style="width:8px;height:8px;background:#ff00d4;top:72%;left:84%;animation-delay:2.2s;"></span>
+      <span class="particula" style="width:5px;height:5px;background:#e2e8f0;top:45%;left:50%;animation-delay:3s;"></span>
+      <span class="particula" style="width:9px;height:9px;background:#00f0ff;top:12%;left:60%;animation-delay:1s;"></span>
+
+      <div class="relative z-10 mx-auto max-w-4xl text-center">
+        <!-- Etiqueta -->
+        <span class="inline-flex items-center gap-2 rounded-full border border-magenta/40 bg-magenta/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-magenta">
+          <i class="fa-solid fa-bolt"></i> Distribuidores oficiales
+        </span>
+
+        <!-- Título impactante -->
+        <h1 class="mt-6 font-display text-4xl font-extrabold leading-tight sm:text-5xl lg:text-7xl">
+          El Poder que Necesitas para <span class="texto-neon">Ganar</span>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="mx-auto mt-6 max-w-2xl text-base text-texto/70 sm:text-lg">
+          Los mejores componentes GPU, CPU y periféricos para tu setup competitivo.
+          Distribuidores oficiales de las marcas top.
+        </p>
+
+        <!-- Botón CTA principal -->
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#servicios"
+             class="btn-base hover-neon-cyan inline-flex items-center gap-2 rounded-xl bg-cyan px-8 py-4 text-base font-bold text-fondo">
+            <i class="fa-solid fa-rocket"></i> Explorar Catálogo
+          </a>
+          <a href="#contacto"
+             class="btn-base hover-neon-magenta inline-flex items-center gap-2 rounded-xl border border-white/15 px-8 py-4 text-base font-semibold text-texto hover:border-magenta hover:text-magenta">
+            Cotiza Ahora
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Sobre Nosotros (Descripción) ===================== -->
+    <section id="nosotros" class="px-6 py-24">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+        <!-- Texto -->
+        <div>
+          <span class="text-sm font-semibold uppercase tracking-widest text-cyan">Sobre Nosotros</span>
+          <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">
+            Sobre <span class="texto-neon">Mundo Gaming</span>
+          </h2>
+          <p class="mt-6 text-base leading-relaxed text-texto/70">
+            Somos un equipo de entusiastas del gaming y la tecnología. Con más de 8 años en el mercado,
+            conectamos a jugadores y creadores de contenido con el hardware más confiable y de mayor
+            rendimiento. Garantizamos productos 100% originales y soporte técnico especializado.
+          </p>
+
+          <!-- Métricas destacadas -->
+          <div class="mt-8 grid grid-cols-3 gap-4">
+            <div class="rounded-xl bg-tarjeta p-4 text-center ring-1 ring-white/5">
+              <p class="font-display text-2xl font-extrabold text-cyan">+8</p>
+              <p class="mt-1 text-xs text-texto/60">Años en el mercado</p>
+            </div>
+            <div class="rounded-xl bg-tarjeta p-4 text-center ring-1 ring-white/5">
+              <p class="font-display text-2xl font-extrabold text-magenta">100%</p>
+              <p class="mt-1 text-xs text-texto/60">Productos originales</p>
+            </div>
+            <div class="rounded-xl bg-tarjeta p-4 text-center ring-1 ring-white/5">
+              <p class="font-display text-2xl font-extrabold text-cyan">24/7</p>
+              <p class="mt-1 text-xs text-texto/60">Soporte técnico</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque visual decorativo (CSS puro, sin imágenes) -->
+        <div class="relative">
+          <div class="tarjeta rounded-2xl bg-tarjeta p-10 ring-1 ring-white/5">
+            <div class="flex items-center justify-center">
+              <i class="fa-solid fa-desktop text-[7rem] text-cyan/80"></i>
+            </div>
+            <div class="mt-8 space-y-3">
+              <div class="flex items-center gap-3 text-sm text-texto/80">
+                <i class="fa-solid fa-circle-check text-cyan"></i> Componentes de marcas líderes
+              </div>
+              <div class="flex items-center gap-3 text-sm text-texto/80">
+                <i class="fa-solid fa-circle-check text-cyan"></i> Garantía oficial y facturación
+              </div>
+              <div class="flex items-center gap-3 text-sm text-texto/80">
+                <i class="fa-solid fa-circle-check text-cyan"></i> Asesoramiento experto y personalizado
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Servicios / Características principales ===================== -->
+    <section id="servicios" class="px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <!-- Encabezado de sección -->
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="text-sm font-semibold uppercase tracking-widest text-magenta">Nuestros Servicios</span>
+          <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">
+            Todo para tu <span class="texto-neon">setup competitivo</span>
+          </h2>
+          <p class="mt-4 text-base text-texto/70">
+            Hardware de última generación, armado a medida y logística confiable en todo el país.
+          </p>
+        </div>
+
+        <!-- Grid de 3 columnas -->
+        <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+
+          <!-- Característica 1: GPUs -->
+          <article class="tarjeta hover-neon-cyan rounded-2xl bg-tarjeta p-8 ring-1 ring-white/5">
+            <span class="flex h-14 w-14 items-center justify-center rounded-xl bg-cyan/10 text-2xl text-cyan">
+              <i class="fa-solid fa-microchip"></i>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-bold">GPUs de Última Generación</h3>
+            <p class="mt-3 text-sm leading-relaxed text-texto/70">
+              RTX 4000 y Radeon RX 7000, stock garantizado.
+            </p>
+          </article>
+
+          <!-- Característica 2: Armado de PCs -->
+          <article class="tarjeta hover-neon-magenta rounded-2xl bg-tarjeta p-8 ring-1 ring-white/5">
+            <span class="flex h-14 w-14 items-center justify-center rounded-xl bg-magenta/10 text-2xl text-magenta">
+              <i class="fa-solid fa-gear"></i>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-bold">Armado de PCs Personalizadas</h3>
+            <p class="mt-3 text-sm leading-relaxed text-texto/70">
+              Asesoramos tu compra para maximizar FPS y rendimiento.
+            </p>
+          </article>
+
+          <!-- Característica 3: Envíos -->
+          <article class="tarjeta hover-neon-cyan rounded-2xl bg-tarjeta p-8 ring-1 ring-white/5">
+            <span class="flex h-14 w-14 items-center justify-center rounded-xl bg-cyan/10 text-2xl text-cyan">
+              <i class="fa-solid fa-truck-fast"></i>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-bold">Envíos a Todo el País</h3>
+            <p class="mt-3 text-sm leading-relaxed text-texto/70">
+              Logística exprés con seguimiento en tiempo real.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Testimonios / Reseñas ===================== -->
+    <section id="testimonios" class="px-6 py-24">
+      <div class="mx-auto max-w-5xl">
+        <!-- Encabezado de sección -->
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="text-sm font-semibold uppercase tracking-widest text-cyan">Reseñas</span>
+          <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">
+            Lo que dicen nuestros <span class="texto-neon">clientes</span>
+          </h2>
+        </div>
+
+        <!-- Grid de 2 columnas -->
+        <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
+
+          <!-- Testimonio 1 -->
+          <figure class="testimonio tarjeta rounded-2xl bg-tarjeta p-8 ring-1 ring-white/5">
+            <blockquote class="text-base leading-relaxed text-texto/85">
+              Mundo Gaming me ayudó a armar mi PC para streaming. Llegó todo en perfecto estado y el rendimiento es brutal.
+            </blockquote>
+            <figcaption class="mt-6 flex items-center gap-4">
+              <span class="flex h-12 w-12 items-center justify-center rounded-full bg-cyan/15 font-display font-bold text-cyan">CM</span>
+              <div>
+                <p class="font-semibold text-texto">Carlos M.</p>
+                <p class="text-sm text-texto/60">Streamer</p>
+              </div>
+              <span class="ml-auto text-cyan">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </span>
+            </figcaption>
+          </figure>
+
+          <!-- Testimonio 2 -->
+          <figure class="testimonio tarjeta rounded-2xl bg-tarjeta p-8 ring-1 ring-white/5">
+            <blockquote class="text-base leading-relaxed text-texto/85">
+              Los precios son imbatibles y la atención al cliente es de primera. Mi nuevo setup corre todo en Ultra.
+            </blockquote>
+            <figcaption class="mt-6 flex items-center gap-4">
+              <span class="flex h-12 w-12 items-center justify-center rounded-full bg-magenta/15 font-display font-bold text-magenta">LG</span>
+              <div>
+                <p class="font-semibold text-texto">Laura G.</p>
+                <p class="text-sm text-texto/60">Gamer Profesional</p>
+              </div>
+              <span class="ml-auto text-magenta">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </span>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Formulario de Contacto ===================== -->
+    <section id="contacto" class="px-6 py-24">
+      <div class="mx-auto max-w-3xl">
+        <!-- Encabezado de sección -->
+        <div class="text-center">
+          <span class="text-sm font-semibold uppercase tracking-widest text-magenta">Contacto</span>
+          <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">
+            ¿Necesitas una <span class="texto-neon">Cotización Personalizada</span>?
+          </h2>
+          <p class="mt-4 text-base text-texto/70">
+            Completá el formulario y nuestro equipo te responderá a la brevedad.
+          </p>
+        </div>
+
+        <!-- Formulario (solo maquetado visual, sin backend) -->
+        <form class="mt-12 rounded-2xl bg-tarjeta p-8 ring-1 ring-white/5 sm:p-10" onsubmit="return false;">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <!-- Nombre Completo -->
+            <div>
+              <label for="nombre" class="mb-2 block text-sm font-medium text-texto/80">Nombre Completo</label>
+              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre y apellido"
+                     class="w-full rounded-lg border border-white/10 bg-fondo px-4 py-3 text-sm text-texto placeholder-texto/40 outline-none transition focus:border-cyan focus:ring-2 focus:ring-cyan/40" />
+            </div>
+            <!-- Correo Electrónico -->
+            <div>
+              <label for="email" class="mb-2 block text-sm font-medium text-texto/80">Correo Electrónico</label>
+              <input id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com"
+                     class="w-full rounded-lg border border-white/10 bg-fondo px-4 py-3 text-sm text-texto placeholder-texto/40 outline-none transition focus:border-cyan focus:ring-2 focus:ring-cyan/40" />
+            </div>
+            <!-- Teléfono -->
+            <div class="sm:col-span-2">
+              <label for="telefono" class="mb-2 block text-sm font-medium text-texto/80">Teléfono</label>
+              <input id="telefono" name="telefono" type="text" placeholder="+54 9 11 0000 0000"
+                     class="w-full rounded-lg border border-white/10 bg-fondo px-4 py-3 text-sm text-texto placeholder-texto/40 outline-none transition focus:border-cyan focus:ring-2 focus:ring-cyan/40" />
+            </div>
+            <!-- Mensaje / Requerimiento -->
+            <div class="sm:col-span-2">
+              <label for="mensaje" class="mb-2 block text-sm font-medium text-texto/80">Mensaje / Requerimiento</label>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contanos qué hardware o servicio necesitás..."
+                        class="w-full resize-none rounded-lg border border-white/10 bg-fondo px-4 py-3 text-sm text-texto placeholder-texto/40 outline-none transition focus:border-cyan focus:ring-2 focus:ring-cyan/40"></textarea>
+            </div>
+          </div>
+
+          <!-- Botón de envío (visualmente llamativo) -->
+          <button type="submit"
+                  class="btn-base hover-neon-magenta mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan to-magenta px-8 py-4 text-base font-bold text-fondo">
+            <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== Footer (Pie de página) ===================== -->
+  <footer class="border-t border-white/5 bg-tarjeta/40 px-6 py-12">
+    <div class="mx-auto max-w-6xl">
+      <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+
+        <!-- Logo + descripción breve -->
+        <a href="#inicio" class="flex items-center gap-2 font-display text-xl font-extrabold">
+          <i class="fa-solid fa-gamepad text-cyan"></i>
+          <span>Mundo<span class="texto-neon">Gaming</span></span>
+        </a>
+
+        <!-- Enlaces a redes sociales (iconos Font Awesome) -->
+        <div class="flex items-center gap-4">
+          <a href="#" aria-label="Facebook"
+             class="btn-base hover-neon-cyan flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-texto/80 hover:bg-cyan hover:text-fondo">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" aria-label="Instagram"
+             class="btn-base hover-neon-magenta flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-texto/80 hover:bg-magenta hover:text-fondo">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" aria-label="Twitter / X"
+             class="btn-base hover-neon-cyan flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-texto/80 hover:bg-cyan hover:text-fondo">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="#" aria-label="YouTube"
+             class="btn-base hover-neon-magenta flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-texto/80 hover:bg-magenta hover:text-fondo">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Separador -->
+      <hr class="my-8 border-white/5" />
+
+      <!-- Copyright -->
+      <p class="text-center text-sm text-texto/50">
+        © 2026 Mundo Gaming. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

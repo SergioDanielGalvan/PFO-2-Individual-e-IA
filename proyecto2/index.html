@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación de Prompt Engineering - Mundo Gaming</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Configuración visual general de la portada */
+    :root { --bg: #0b0d15; --card: #1a1d2e; --text: #e2e8f0; --cyan: #00f0ff; --magenta: #ff00d4; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, rgba(0,240,255,.18), transparent 34rem), radial-gradient(circle at bottom right, rgba(255,0,212,.16), transparent 30rem), var(--bg);
+      color: var(--text); min-height: 100vh; overflow-x: hidden;
+    }
+    /* Patrón de cuadrícula tecnológico */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1;
+      background-image: linear-gradient(rgba(0,240,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,212,.08) 1px, transparent 1px);
+      background-size: 48px 48px; mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+    /* Tarjetas de acceso */
+    .access-card {
+      background: linear-gradient(145deg, rgba(26,29,46,.96), rgba(11,13,21,.94));
+      border: 1px solid rgba(226,232,240,.12);
+      box-shadow: 0 0 0 1px rgba(0,240,255,.08), 0 22px 60px rgba(0,0,0,.38);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .access-card:hover { transform: translateY(-8px) scale(1.03); border-color: rgba(0,240,255,.7); box-shadow: 0 0 28px rgba(0,240,255,.22), 0 22px 60px rgba(255,0,212,.18); }
+    .neon-text { text-shadow: 0 0 22px rgba(0,240,255,.38), 0 0 34px rgba(255,0,212,.26); }
+  </style>
+</head>
+<body>
+  <!-- Portada -->
+  <main class="min-h-screen px-5 py-12 sm:px-8 flex items-center justify-center">
+    <section class="w-full max-w-6xl text-center">
+      <!-- Encabezado principal -->
+      <div class="mb-10 sm:mb-14">
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200"><i class="fa-solid fa-bolt"></i> Proyecto Front-End</p>
+        <h1 class="neon-text mx-auto max-w-4xl text-4xl font-black leading-tight tracking-normal sm:text-5xl lg:text-6xl">Evaluación de Prompt Engineering - Mundo Gaming</h1>
+        <p class="mx-auto mt-5 max-w-2xl text-lg font-medium text-slate-300 sm:text-xl">Landing Page generada por IA para Reseller de Hardware</p>
+      </div>
+      <!-- Tarjetas de navegación -->
+      <div class="grid gap-5 md:grid-cols-3">
+        <a href="prompt.txt" class="access-card group rounded-lg p-7 text-left" aria-label="Ver el Prompt Utilizado">
+          <div class="mb-8 flex h-14 w-14 items-center justify-center rounded-lg bg-cyan-400/10 text-2xl text-cyan-300 shadow-[0_0_22px_rgba(0,240,255,0.18)]"><i class="fa-solid fa-file-lines"></i></div>
+          <h2 class="text-2xl font-extrabold text-slate-100">Ver el Prompt Utilizado</h2>
+          <p class="mt-3 text-sm leading-6 text-slate-400">Consulta el texto base usado para generar la experiencia visual del proyecto.</p>
+          <span class="mt-7 inline-flex items-center gap-2 font-bold text-cyan-300">Abrir archivo <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+        </a>
+        <a href="..\proyecto1\landing.html" class="access-card group rounded-lg p-7 text-left" aria-label="Landing Page - Agente 1 Cursor">
+          <div class="mb-8 flex h-14 w-14 items-center justify-center rounded-lg bg-fuchsia-500/10 text-2xl text-fuchsia-300 shadow-[0_0_22px_rgba(255,0,212,0.18)]"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h2 class="text-2xl font-extrabold text-slate-100">Landing Page - Agente 1 (Claude)</h2>
+          <p class="mt-3 text-sm leading-6 text-slate-400">Agente: Cursor. Modelo: Claude 4.6 Sonnet.</p>
+          <span class="mt-7 inline-flex items-center gap-2 font-bold text-fuchsia-300">Ver landing <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+        </a>
+        <a href="landing.html" class="access-card group rounded-lg p-7 text-left" aria-label="Landing Page - Agente 2 Codex">
+          <div class="mb-8 flex h-14 w-14 items-center justify-center rounded-lg bg-cyan-400/10 text-2xl text-cyan-300 shadow-[0_0_22px_rgba(0,240,255,0.18)]"><i class="fa-solid fa-code"></i></div>
+          <h2 class="text-2xl font-extrabold text-slate-100">Landing Page - Agente 2 (Codex)</h2>
+          <p class="mt-3 text-sm leading-6 text-slate-400">Agente: Codex (OpenAI). Modelo: GPT-5.</p>
+          <span class="mt-7 inline-flex items-center gap-2 font-bold text-cyan-300">Ver landing <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

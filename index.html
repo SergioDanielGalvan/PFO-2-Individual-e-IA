@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ============================================================= -->
+  <!-- PORTADA DE ACCESO - Evaluación de Prompt Engineering           -->
+  <!-- Proyecto: Mundo Gaming (Reseller de Hardware)                  -->
+  <!-- ============================================================= -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portada de acceso a la evaluación de Prompt Engineering del proyecto Mundo Gaming." />
+    <title>Portada Unificada - Evaluación de Prompt Engineering</title>
+
+    <!-- Tailwind CSS vía CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome vía CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Fuente Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        /* Estilos personalizados para la temática oscura / gamer */
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #0b0d15;
+            color: #e2e8f0;
+        }
+        .card-bg {
+            background-color: #1a1d2e;
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+        .card-bg:hover {
+            transform: translateY(-8px);
+            border-color: #00f0ff;
+            box-shadow: 0 20px 40px -15px rgba(0, 240, 255, 0.25);
+        }
+        .btn-neon {
+            background: linear-gradient(135deg, #00f0ff, #ff00d4);
+            transition: all 0.3s ease;
+            color: #0b0d15;
+            font-weight: 700;
+        }
+        .btn-neon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+        }
+        .accent-cyan {
+            color: #00f0ff;
+        }
+        .accent-magenta {
+            color: #ff00d4;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #00f0ff, #ff00d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        /* Fondo con grid sutil */
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4 bg-grid">
+
+    <div class="max-w-6xl w-full mx-auto py-8 md:py-12">
+
+        <!-- Encabezado -->
+        <div class="text-center mb-12 md:mb-16">
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+                <span class="gradient-text">Evaluación de Prompt Engineering</span>
+            </h1>
+            <p class="text-gray-400 text-sm md:text-base mt-3 max-w-2xl mx-auto">
+                Portada unificada para acceder a los 3 proyectos generados por agentes de IA.
+                <br class="hidden sm:block" />
+                Selecciona uno para visualizar el resultado.
+            </p>
+            <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-pink-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Grid de 3 Tarjetas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+            <!-- ========================================================= -->
+            <!-- TARJETA 1: Proyecto 1 (Ej: Agente Cursor)                  -->
+            <!-- ========================================================= -->
+            <div class="card-bg rounded-2xl p-6 md:p-8 text-center flex flex-col items-center">
+                <div class="w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center text-3xl text-cyan-400 mb-4">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-white">Proyecto 1</h2>
+                <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                    <span class="text-cyan-300 font-semibold">Agente:</span> Claude <br />
+                    <span class="text-gray-500">(Modelo: Claude 4.6 Sonnet)</span>
+                </p>
+                <p class="text-gray-400 text-sm mt-3 leading-relaxed flex-1">
+                    Landing Page generada para <span class="text-white font-semibold">Mundo Gaming</span>.
+                    <br /><span class="text-xs text-gray-500">Hero, Servicios, Testimonios y Contacto.</span>
+                </p>
+                <a href="./proyecto1/index.html" 
+                   class="btn-neon w-full py-3 px-4 rounded-xl text-center mt-6 transition-all inline-block text-sm uppercase tracking-wider">
+                    <i class="fas fa-rocket mr-2"></i> Ver Proyecto 1
+                </a>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- TARJETA 2: Proyecto 2 (Ej: Agente Codex)                  -->
+            <!-- ========================================================= -->
+            <div class="card-bg rounded-2xl p-6 md:p-8 text-center flex flex-col items-center">
+                <div class="w-16 h-16 rounded-full bg-pink-500/10 flex items-center justify-center text-3xl text-pink-400 mb-4">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-white">Proyecto 2</h2>
+                <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                    <span class="text-cyan-300 font-semibold">Agente:</span> Codex (OpenAI) <br />
+                    <span class="text-gray-500">(Modelo: GPT-5.5-codex)</span>
+                </p>
+                <p class="text-gray-400 text-sm mt-3 leading-relaxed flex-1">
+                    Landing Page generada para <span class="text-white font-semibold">Mundo Gaming</span>.
+                    <br /><span class="text-xs text-gray-500">Hero, Servicios, Testimonios y Contacto.</span>
+                </p>
+                <a href="./proyecto2/index.html" 
+                   class="btn-neon w-full py-3 px-4 rounded-xl text-center mt-6 transition-all inline-block text-sm uppercase tracking-wider">
+                    <i class="fas fa-rocket mr-2"></i> Ver Proyecto 2
+                </a>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- TARJETA 3: Proyecto 3 (Ej: Agente OpenCode o Claude)      -->
+            <!-- ========================================================= -->
+            <div class="card-bg rounded-2xl p-6 md:p-8 text-center flex flex-col items-center">
+                <div class="w-16 h-16 rounded-full bg-purple-500/10 flex items-center justify-center text-3xl text-purple-400 mb-4">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-white">Proyecto 3</h2>
+                <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                    <span class="text-cyan-300 font-semibold">Agente:</span> Claude <br />
+                    <span class="text-gray-500">(Modelo: 4.8 Opus Ultracode)</span>
+                </p>
+                <p class="text-gray-400 text-sm mt-3 leading-relaxed flex-1">
+                    Landing Page generada para <span class="text-white font-semibold">Mundo Gaming</span>.
+                    <br /><span class="text-xs text-gray-500">Hero, Servicios, Testimonios y Contacto.</span>
+                </p>
+                <a href="./proyecto3/index.html" 
+                   class="btn-neon w-full py-3 px-4 rounded-xl text-center mt-6 transition-all inline-block text-sm uppercase tracking-wider">
+                    <i class="fas fa-rocket mr-2"></i> Ver Proyecto 3
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Pie de página sutil -->
+        <div class="text-center mt-12 text-gray-600 text-xs border-t border-gray-800/50 pt-6">
+            <i class="fas fa-chevron-circle-right text-cyan-400 mr-1"></i> 
+            Proyecto académico - Prompt Engineering en Agentes de IA 
+            <i class="fas fa-chevron-circle-left text-pink-400 ml-1"></i>
+            <br class="sm:hidden" />
+            <span class="text-gray-700">|</span> Portada unificada
+        </div>
+
+    </div>
+
+</body>
+</html>

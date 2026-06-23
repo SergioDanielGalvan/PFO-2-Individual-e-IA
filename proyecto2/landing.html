@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo Gaming | Hardware de Alto Rendimiento</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Configuración global de la landing */
+    :root { --bg: #0b0d15; --card: #1a1d2e; --text: #e2e8f0; --cyan: #00f0ff; --magenta: #ff00d4; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    /* Fondo con cuadrícula y partículas CSS */
+    .tech-bg { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(circle at 20% 20%, rgba(0,240,255,.22), transparent 28rem), radial-gradient(circle at 80% 10%, rgba(255,0,212,.18), transparent 26rem), linear-gradient(180deg, #0b0d15 0%, #101323 100%); }
+    .tech-bg::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(rgba(0,240,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,.08) 1px, transparent 1px); background-size: 54px 54px; opacity: .65; }
+    .tech-bg::after { content: ""; position: absolute; inset: -10%; z-index: -1; background-image: radial-gradient(circle, rgba(0,240,255,.6) 0 1px, transparent 2px), radial-gradient(circle, rgba(255,0,212,.5) 0 1px, transparent 2px); background-position: 0 0, 38px 44px; background-size: 118px 118px, 146px 146px; opacity: .34; animation: drift 18s linear infinite; }
+    @keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(-72px,46px,0); } }
+    /* Componentes reutilizables */
+    .glow-button { transition: transform .22s ease, box-shadow .22s ease, background .22s ease; box-shadow: 0 0 20px rgba(0,240,255,.25); }
+    .glow-button:hover { transform: scale(1.05); box-shadow: 0 0 28px rgba(0,240,255,.45), 0 0 36px rgba(255,0,212,.2); }
+    .panel { background: var(--card); border: 1px solid rgba(226,232,240,.1); box-shadow: 0 18px 55px rgba(0,0,0,.28); }
+    .section-title { text-shadow: 0 0 20px rgba(0,240,255,.24); }
+    .field { background: rgba(11,13,21,.72); border: 1px solid rgba(226,232,240,.16); transition: border-color .18s ease, box-shadow .18s ease; }
+    .field:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(0,240,255,.12); }
+    /* Menú mobile con CSS puro */
+    #menu-toggle:checked ~ .mobile-menu { display: block; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-[#0b0d15]/90 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="#inicio" class="flex items-center gap-3 text-xl font-black text-slate-100"><span class="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-400/10 text-cyan-300 shadow-[0_0_18px_rgba(0,240,255,0.2)]"><i class="fa-solid fa-gamepad"></i></span>Mundo Gaming</a>
+      <nav class="hidden items-center gap-8 text-sm font-bold text-slate-300 md:flex">
+        <a class="transition hover:text-cyan-300" href="#inicio">Inicio</a><a class="transition hover:text-cyan-300" href="#productos">Productos</a><a class="transition hover:text-cyan-300" href="#servicios">Servicios</a><a class="transition hover:text-cyan-300" href="#nosotros">Nosotros</a><a class="transition hover:text-cyan-300" href="#contacto">Contacto</a>
+      </nav>
+      <div class="hidden md:block"><a href="#contacto" class="glow-button inline-flex items-center gap-2 rounded-lg bg-cyan-400 px-5 py-3 text-sm font-black text-[#0b0d15]">Cotiza Ahora <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="md:hidden">
+        <input id="menu-toggle" class="peer hidden" type="checkbox">
+        <label for="menu-toggle" class="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg border border-white/10 bg-white/5 text-xl text-cyan-200" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></label>
+        <div class="mobile-menu absolute left-0 top-full hidden w-full border-b border-white/10 bg-[#0b0d15] px-5 py-5 shadow-2xl">
+          <nav class="grid gap-4 text-sm font-bold text-slate-200">
+            <a class="rounded-lg px-3 py-2 hover:bg-white/5 hover:text-cyan-300" href="#inicio">Inicio</a><a class="rounded-lg px-3 py-2 hover:bg-white/5 hover:text-cyan-300" href="#productos">Productos</a><a class="rounded-lg px-3 py-2 hover:bg-white/5 hover:text-cyan-300" href="#servicios">Servicios</a><a class="rounded-lg px-3 py-2 hover:bg-white/5 hover:text-cyan-300" href="#nosotros">Nosotros</a><a class="rounded-lg px-3 py-2 hover:bg-white/5 hover:text-cyan-300" href="#contacto">Contacto</a>
+            <a href="#contacto" class="glow-button mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-cyan-400 px-5 py-3 font-black text-[#0b0d15]">Cotiza Ahora <i class="fa-solid fa-arrow-right"></i></a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="inicio" class="tech-bg">
+    <section class="mx-auto grid min-h-[calc(100vh-73px)] max-w-7xl items-center gap-10 px-5 py-20 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
+      <div>
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-fuchsia-400/30 bg-fuchsia-400/10 px-4 py-2 text-sm font-bold text-fuchsia-200"><i class="fa-solid fa-trophy"></i> Hardware competitivo para e-sports</p>
+        <h1 class="max-w-4xl text-5xl font-black leading-tight tracking-normal text-slate-50 sm:text-6xl lg:text-7xl">El Poder que Necesitas para Ganar</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">Los mejores componentes GPU, CPU y periféricos para tu setup competitivo. Distribuidores oficiales de las marcas top.</p>
+        <div class="mt-9 flex flex-col gap-4 sm:flex-row"><a href="#productos" class="glow-button inline-flex items-center justify-center gap-3 rounded-lg bg-cyan-400 px-7 py-4 text-base font-black text-[#0b0d15]">Explorar Catálogo <i class="fa-solid fa-chevron-right"></i></a></div>
+      </div>
+      <!-- Visual CSS del setup gamer -->
+      <div id="productos" class="panel rounded-lg p-5 sm:p-7">
+        <div class="rounded-lg border border-cyan-300/20 bg-[#0b0d15] p-5 shadow-[inset_0_0_35px_rgba(0,240,255,0.08)]">
+          <div class="mb-5 flex items-center justify-between"><div class="flex gap-2"><span class="h-3 w-3 rounded-full bg-[#ff00d4]"></span><span class="h-3 w-3 rounded-full bg-[#00f0ff]"></span><span class="h-3 w-3 rounded-full bg-slate-500"></span></div><span class="text-xs font-black uppercase tracking-normal text-cyan-200">MG Performance</span></div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-5"><i class="fa-solid fa-microchip mb-4 text-4xl text-cyan-300"></i><p class="text-sm font-bold text-slate-400">GPU</p><p class="mt-1 text-2xl font-black text-slate-100">RTX / RX</p></div>
+            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-5"><i class="fa-solid fa-memory mb-4 text-4xl text-fuchsia-300"></i><p class="text-sm font-bold text-slate-400">RAM</p><p class="mt-1 text-2xl font-black text-slate-100">DDR5 RGB</p></div>
+            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-5"><i class="fa-solid fa-computer mb-4 text-4xl text-cyan-300"></i><p class="text-sm font-bold text-slate-400">Setup</p><p class="mt-1 text-2xl font-black text-slate-100">Ultra FPS</p></div>
+            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-5"><i class="fa-solid fa-headset mb-4 text-4xl text-fuchsia-300"></i><p class="text-sm font-bold text-slate-400">Periféricos</p><p class="mt-1 text-2xl font-black text-slate-100">Pro Gear</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sobre Nosotros -->
+  <section id="nosotros" class="px-5 py-20 lg:px-8">
+    <div class="mx-auto max-w-5xl text-center"><p class="mb-3 text-sm font-black uppercase tracking-normal text-cyan-300">Sobre Mundo Gaming</p><h2 class="section-title text-4xl font-black text-slate-50 sm:text-5xl">Sobre Mundo Gaming</h2><p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">Somos un equipo de entusiastas del gaming y la tecnología. Con más de 8 años en el mercado, conectamos a jugadores y creadores de contenido con el hardware más confiable y de mayor rendimiento. Garantizamos productos 100% originales y soporte técnico especializado.</p></div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="bg-[#101323] px-5 py-20 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-12 text-center"><p class="mb-3 text-sm font-black uppercase tracking-normal text-fuchsia-300">Servicios</p><h2 class="section-title text-4xl font-black text-slate-50 sm:text-5xl">Características principales</h2></div>
+      <div class="grid gap-6 md:grid-cols-3">
+        <article class="panel rounded-lg p-7 transition duration-200 hover:-translate-y-2 hover:border-cyan-300/60 hover:shadow-[0_0_28px_rgba(0,240,255,0.16)]"><div class="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-cyan-400/10 text-3xl text-cyan-300"><i class="fa-solid fa-microchip"></i></div><h3 class="text-2xl font-black text-slate-100">GPUs de Última Generación</h3><p class="mt-4 leading-7 text-slate-400">RTX 4000 y Radeon RX 7000, stock garantizado.</p></article>
+        <article class="panel rounded-lg p-7 transition duration-200 hover:-translate-y-2 hover:border-fuchsia-300/60 hover:shadow-[0_0_28px_rgba(255,0,212,0.16)]"><div class="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-fuchsia-400/10 text-3xl text-fuchsia-300"><i class="fa-solid fa-gear"></i></div><h3 class="text-2xl font-black text-slate-100">Armado de PCs Personalizadas</h3><p class="mt-4 leading-7 text-slate-400">Asesoramos tu compra para maximizar FPS y rendimiento.</p></article>
+        <article class="panel rounded-lg p-7 transition duration-200 hover:-translate-y-2 hover:border-cyan-300/60 hover:shadow-[0_0_28px_rgba(0,240,255,0.16)]"><div class="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-cyan-400/10 text-3xl text-cyan-300"><i class="fa-solid fa-truck-fast"></i></div><h3 class="text-2xl font-black text-slate-100">Envíos a Todo el País</h3><p class="mt-4 leading-7 text-slate-400">Logística exprés con seguimiento en tiempo real.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="px-5 py-20 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-12 text-center"><p class="mb-3 text-sm font-black uppercase tracking-normal text-cyan-300">Reseñas</p><h2 class="section-title text-4xl font-black text-slate-50 sm:text-5xl">Testimonios</h2></div>
+      <div class="grid gap-6 md:grid-cols-2">
+        <article class="panel rounded-lg p-7"><div class="mb-5 flex gap-1 text-cyan-300"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><blockquote class="text-lg leading-8 text-slate-300">“Mundo Gaming me ayudó a armar mi PC para streaming. Llegó todo en perfecto estado y el rendimiento es brutal.”</blockquote><p class="mt-5 font-black text-slate-100">Carlos M., Streamer</p></article>
+        <article class="panel rounded-lg p-7"><div class="mb-5 flex gap-1 text-fuchsia-300"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><blockquote class="text-lg leading-8 text-slate-300">“Los precios son imbatibles y la atención al cliente es de primera. Mi nuevo setup corre todo en Ultra.”</blockquote><p class="mt-5 font-black text-slate-100">Laura G., Gamer Profesional</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="bg-[#101323] px-5 py-20 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div><p class="mb-3 text-sm font-black uppercase tracking-normal text-fuchsia-300">Contacto</p><h2 class="section-title text-4xl font-black text-slate-50 sm:text-5xl">¿Necesitas una Cotización Personalizada?</h2><p class="mt-6 max-w-xl text-lg leading-8 text-slate-300">Contanos qué juegos, programas o flujo de trabajo querés potenciar y te ayudamos a elegir componentes equilibrados para tu presupuesto.</p></div>
+      <form class="panel rounded-lg p-6 sm:p-8">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <label class="grid gap-2 text-sm font-bold text-slate-200">Nombre Completo<input class="field rounded-lg px-4 py-3 text-slate-100 placeholder:text-slate-500" type="text" placeholder="Tu nombre"></label>
+          <label class="grid gap-2 text-sm font-bold text-slate-200">Correo Electrónico<input class="field rounded-lg px-4 py-3 text-slate-100 placeholder:text-slate-500" type="email" placeholder="nombre@email.com"></label>
+          <label class="grid gap-2 text-sm font-bold text-slate-200 sm:col-span-2">Teléfono<input class="field rounded-lg px-4 py-3 text-slate-100 placeholder:text-slate-500" type="text" placeholder="+54 9 11 0000 0000"></label>
+          <label class="grid gap-2 text-sm font-bold text-slate-200 sm:col-span-2">Mensaje / Requerimiento<textarea class="field min-h-36 resize-y rounded-lg px-4 py-3 text-slate-100 placeholder:text-slate-500" placeholder="Quiero armar una PC para gaming competitivo..."></textarea></label>
+        </div>
+        <button class="glow-button mt-6 inline-flex w-full items-center justify-center gap-3 rounded-lg bg-gradient-to-r from-cyan-400 to-fuchsia-400 px-6 py-4 font-black text-[#0b0d15]" type="button">Enviar Mensaje <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#0b0d15] px-5 py-8 lg:px-8">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
+      <p class="text-sm font-semibold text-slate-400">© 2026 Mundo Gaming. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-4 text-xl"><a class="text-slate-400 transition hover:scale-110 hover:text-cyan-300" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a><a class="text-slate-400 transition hover:scale-110 hover:text-fuchsia-300" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a class="text-slate-400 transition hover:scale-110 hover:text-cyan-300" href="#" aria-label="Twitter/X"><i class="fa-brands fa-twitter"></i></a><a class="text-slate-400 transition hover:scale-110 hover:text-fuchsia-300" href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div>
+    </div>
+  </footer>
+</body>
+</html>

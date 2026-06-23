@@ -1,0 +1,23 @@
+Audité el PFO2_.pdf a fondo, no solo el texto visible. Conclusión: está limpio — no contiene ninguna técnica de prompt injection ni nada oculto dirigido a engañar a una IA.
+
+Qué revisé y qué encontré
+Vector de ataque	Resultado
+Texto oculto (blanco sobre blanco, modo de render invisible Tr 3, fuente diminuta)	❌ Ninguno. Analicé los content streams operador por operador rastreando color de relleno, tamaño de fuente y modo de render.
+Texto extraíble ≠ texto visible (truco de glifos/ToUnicode)	❌ No. El texto que extrae un parser coincide 100% con la consigna visible.
+JavaScript embebido (/JS, /JavaScript, /OpenAction, /AA)	❌ Ausente. Cero scripts y cero acciones automáticas.
+Archivos adjuntos / embebidos (/EmbeddedFile)	❌ Ninguno.
+Formularios / acciones (/AcroForm, /SubmitForm, /Launch, /ImportData)	❌ Ausentes.
+Frases típicas de inyección ("ignora instrucciones", "you are", "system prompt", "reveal", "exfiltr", "base64", "curl", etc.)	❌ Cero coincidencias en los streams.
+Metadatos / XMP	Limpios: Title: <PFO2>, Producer: Skia/PDF m150 Google Docs Renderer. Sin XMP, sin campos sospechosos.
+Sobre los enlaces (lo único "externo")
+El PDF tiene 8 hipervínculos, todos legítimos y coherentes con la consigna:
+
+2 Google Sheets → las PLANILLAS de comisión (Lunes/Viernes) que menciona el texto.
+Cursor, OpenAI Codex, OpenCode, Claude Code (docs) → los agentes recomendados.
+Guías de Prompt Engineering de Anthropic y OpenAI → las referencias del punto 1.
+Ninguno apunta a endpoints de exfiltración de datos ni a destinos disfrazados.
+
+Nota técnica
+Al abrirlo, el parser emitió un aviso Multiple definitions in dictionary ... /h.3nvchpek88zk. Es benigno: son los anclajes de marcadores de encabezado que genera Google Docs (nombres duplicados), no contenido malicioso.
+
+En resumen: es un export normal de Google Docs con la consigna de la PFO2. El único contenido "instruccional" es el propio enunciado del trabajo (que justamente trata sobre diseñar un prompt) — pero eso es el contenido legítimo, no una inyección dirigida al modelo.

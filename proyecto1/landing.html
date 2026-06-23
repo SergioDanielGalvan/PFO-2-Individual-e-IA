@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mundo Gaming | Hardware de Alto Rendimiento para Gaming y E-Sports</title>
+
+<!-- Tailwind CSS vía CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font Awesome vía CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Google Fonts: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  /* ===================== VARIABLES GLOBALES ===================== */
+  :root{
+    --bg: #0b0d15;
+    --card: #1a1d2e;
+    --text: #e2e8f0;
+    --cyan: #00f0ff;
+    --magenta: #ff00d4;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* ===================== UTILIDADES DE COLOR ===================== */
+  .text-cyan-neon{ color: var(--cyan); }
+  .text-magenta-neon{ color: var(--magenta); }
+  .bg-card{ background-color: var(--card); }
+
+  .gradient-text{
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .border-neon{
+    border: 1px solid rgba(0,240,255,0.15);
+  }
+
+  /* ===================== HEADER ===================== */
+  .site-header{
+    background-color: rgba(11,13,21,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,240,255,0.12);
+  }
+
+  .nav-link{
+    position: relative;
+    color: var(--text);
+    transition: color 0.25s ease;
+  }
+  .nav-link::after{
+    content: "";
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0%; height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    transition: width 0.25s ease;
+  }
+  .nav-link:hover{ color: var(--cyan); }
+  .nav-link:hover::after{ width: 100%; }
+
+  .btn-primary{
+    background: linear-gradient(90deg, var(--cyan), #00b8c4);
+    color: #06131a;
+    font-weight: 600;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .btn-primary:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,240,255,0.55);
+  }
+
+  .btn-outline-neon{
+    border: 2px solid var(--magenta);
+    color: var(--magenta);
+    font-weight: 600;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+  }
+  .btn-outline-neon:hover{
+    transform: scale(1.05);
+    background-color: var(--magenta);
+    color: #1a001a;
+    box-shadow: 0 0 25px rgba(255,0,212,0.55);
+  }
+
+  /* Menú hamburguesa (CSS puro, sin librerías) */
+  #mobile-menu-checkbox{ display: none; }
+
+  .hamburger-icon{
+    width: 28px; height: 22px;
+    position: relative;
+    cursor: pointer;
+  }
+  .hamburger-icon span{
+    display: block;
+    position: absolute;
+    height: 2px; width: 100%;
+    background: var(--cyan);
+    border-radius: 2px;
+    left: 0;
+    transition: all 0.3s ease;
+  }
+  .hamburger-icon span:nth-child(1){ top: 0; }
+  .hamburger-icon span:nth-child(2){ top: 10px; }
+  .hamburger-icon span:nth-child(3){ top: 20px; }
+
+  #mobile-menu-checkbox:checked ~ .nav-mobile-wrapper .hamburger-icon span:nth-child(1){
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  #mobile-menu-checkbox:checked ~ .nav-mobile-wrapper .hamburger-icon span:nth-child(2){
+    opacity: 0;
+  }
+  #mobile-menu-checkbox:checked ~ .nav-mobile-wrapper .hamburger-icon span:nth-child(3){
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+
+  .mobile-panel{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  #mobile-menu-checkbox:checked ~ .mobile-panel{
+    max-height: 400px;
+  }
+
+  /* ===================== HERO ===================== */
+  .hero-section{
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Patrón de cuadrícula + partículas en CSS puro */
+  .hero-grid-bg{
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,240,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,240,255,0.06) 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: radial-gradient(circle at 50% 30%, black 0%, transparent 75%);
+    z-index: 0;
+  }
+
+  .hero-glow{
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(0,240,255,0.18), transparent 35%),
+      radial-gradient(circle at 85% 75%, rgba(255,0,212,0.16), transparent 40%);
+    z-index: 0;
+  }
+
+  .particle{
+    position: absolute;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--cyan);
+    opacity: 0.6;
+    animation: float-up linear infinite;
+    box-shadow: 0 0 8px var(--cyan);
+  }
+  .particle.magenta{ background: var(--magenta); box-shadow: 0 0 8px var(--magenta); }
+
+  @keyframes float-up{
+    0%{ transform: translateY(0) translateX(0); opacity: 0; }
+    10%{ opacity: 0.7; }
+    90%{ opacity: 0.4; }
+    100%{ transform: translateY(-600px) translateX(20px); opacity: 0; }
+  }
+
+  .hero-title-glow{
+    text-shadow: 0 0 18px rgba(0,240,255,0.35);
+  }
+
+  .btn-cta-hero{
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    color: #050505;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-cta-hero:hover{
+    transform: scale(1.07);
+    box-shadow: 0 0 35px rgba(0,240,255,0.5), 0 0 55px rgba(255,0,212,0.3);
+  }
+
+  /* ===================== SOBRE NOSOTROS ===================== */
+  .about-stat{
+    border-left: 3px solid var(--cyan);
+    padding-left: 1rem;
+  }
+
+  /* ===================== SERVICIOS / FEATURES ===================== */
+  .feature-card{
+    background-color: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .feature-card:hover{
+    transform: translateY(-6px);
+    border-color: rgba(0,240,255,0.4);
+    box-shadow: 0 10px 30px rgba(0,240,255,0.15);
+  }
+  .feature-icon-wrap{
+    width: 64px; height: 64px;
+    border-radius: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, rgba(0,240,255,0.15), rgba(255,0,212,0.1));
+  }
+
+  /* ===================== TESTIMONIOS ===================== */
+  .testimonial-card{
+    background-color: var(--card);
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .testimonial-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(255,0,212,0.12);
+  }
+  .testimonial-quote-icon{
+    color: rgba(0,240,255,0.25);
+    font-size: 2.5rem;
+  }
+
+  /* ===================== FORMULARIO ===================== */
+  .form-input{
+    background-color: #11131f;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .form-input:focus{
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(0,240,255,0.15);
+  }
+  .form-input::placeholder{ color: #64748b; }
+
+  .btn-submit{
+    background: linear-gradient(90deg, var(--magenta), var(--cyan));
+    color: #050505;
+    font-weight: 700;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .btn-submit:hover{
+    transform: scale(1.04);
+    box-shadow: 0 0 30px rgba(255,0,212,0.45);
+  }
+
+  /* ===================== FOOTER ===================== */
+  .social-icon{
+    width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(0,240,255,0.25);
+    color: var(--text);
+    transition: all 0.25s ease;
+  }
+  .social-icon:hover{
+    background: linear-gradient(135deg, var(--cyan), var(--magenta));
+    color: #050505;
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 0 18px rgba(0,240,255,0.4);
+  }
+
+  /* ===================== SCROLLBAR ===================== */
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: var(--bg); }
+  ::-webkit-scrollbar-thumb{ background: var(--cyan); border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#inicio" class="flex items-center gap-2">
+      <i class="fa-solid fa-gamepad text-2xl text-cyan-neon"></i>
+      <span class="text-xl font-extrabold tracking-tight">Mundo <span class="text-magenta-neon">Gaming</span></span>
+    </a>
+
+    <!-- Navegación de escritorio -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="#productos" class="nav-link">Productos</a>
+      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#nosotros" class="nav-link">Nosotros</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+
+    <!-- Botón CTA de escritorio -->
+    <a href="#contacto" class="hidden md:inline-block btn-primary px-5 py-2.5 rounded-full text-sm">
+      Cotiza Ahora
+    </a>
+
+    <!-- Menú hamburguesa (mobile) -->
+    <input type="checkbox" id="mobile-menu-checkbox">
+    <label for="mobile-menu-checkbox" class="nav-mobile-wrapper md:hidden">
+      <div class="hamburger-icon">
+        <span></span><span></span><span></span>
+      </div>
+    </label>
+  </div>
+
+  <!-- Panel desplegable mobile -->
+  <div class="mobile-panel md:hidden border-t border-cyan-400/10">
+    <nav class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="#productos" class="nav-link">Productos</a>
+      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#nosotros" class="nav-link">Nosotros</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+      <a href="#contacto" class="btn-primary text-center px-5 py-2.5 rounded-full mt-2">Cotiza Ahora</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="inicio" class="hero-section min-h-[90vh] flex items-center px-4 sm:px-6 lg:px-8 pt-16 pb-20">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <!-- Partículas decorativas en CSS puro -->
+  <span class="particle" style="left:10%; animation-duration:9s; animation-delay:0s;"></span>
+  <span class="particle magenta" style="left:25%; animation-duration:12s; animation-delay:1.5s;"></span>
+  <span class="particle" style="left:45%; animation-duration:8s; animation-delay:3s;"></span>
+  <span class="particle magenta" style="left:65%; animation-duration:11s; animation-delay:0.8s;"></span>
+  <span class="particle" style="left:80%; animation-duration:10s; animation-delay:2.2s;"></span>
+  <span class="particle magenta" style="left:92%; animation-duration:13s; animation-delay:4s;"></span>
+
+  <div class="relative z-10 max-w-7xl mx-auto w-full text-center">
+    <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-cyan-400/30 bg-white/5">
+      <i class="fa-solid fa-bolt text-cyan-neon text-sm"></i>
+      <span class="text-xs sm:text-sm tracking-widest uppercase text-cyan-300">Distribuidores Oficiales</span>
+    </div>
+
+    <h1 class="hero-title-glow text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight max-w-4xl mx-auto mb-6">
+      El Poder que Necesitas para <span class="gradient-text">Ganar</span>
+    </h1>
+
+    <p class="text-base sm:text-lg md:text-xl text-slate-300/90 max-w-2xl mx-auto mb-10 font-light">
+      Los mejores componentes GPU, CPU y periféricos para tu setup competitivo. Distribuidores oficiales de las marcas top.
+    </p>
+
+    <a href="#productos" class="btn-cta-hero inline-block px-8 py-4 rounded-full text-base sm:text-lg">
+      Explorar Catálogo <i class="fa-solid fa-arrow-right ml-2"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== SOBRE NOSOTROS ===================== -->
+<section id="nosotros" class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto text-center">
+    <span class="text-magenta-neon text-sm font-semibold tracking-widest uppercase">Quiénes Somos</span>
+    <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-6">Sobre Mundo Gaming</h2>
+    <p class="text-slate-300/90 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+      Somos un equipo de entusiastas del gaming y la tecnología. Con más de 8 años en el mercado, conectamos a jugadores y creadores de contenido con el hardware más confiable y de mayor rendimiento. Garantizamos productos 100% originales y soporte técnico especializado.
+    </p>
+
+    <!-- Mini estadísticas de refuerzo -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12">
+      <div class="about-stat text-left">
+        <p class="text-3xl font-extrabold text-cyan-neon">+8</p>
+        <p class="text-sm text-slate-400">Años en el mercado</p>
+      </div>
+      <div class="about-stat text-left">
+        <p class="text-3xl font-extrabold text-cyan-neon">100%</p>
+        <p class="text-sm text-slate-400">Productos originales</p>
+      </div>
+      <div class="about-stat text-left">
+        <p class="text-3xl font-extrabold text-cyan-neon">24/7</p>
+        <p class="text-sm text-slate-400">Soporte especializado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICIOS / CARACTERÍSTICAS PRINCIPALES ===================== -->
+<section id="servicios" class="py-20 px-4 sm:px-6 lg:px-8 bg-[#0e1019]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-cyan-neon text-sm font-semibold tracking-widest uppercase">Lo Que Ofrecemos</span>
+      <h2 class="text-3xl sm:text-4xl font-bold mt-3">Servicios Diseñados para Ganar</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Característica 1 -->
+      <div class="feature-card p-8 text-center">
+        <div class="feature-icon-wrap mx-auto mb-6">
+          <i class="fa-solid fa-microchip text-2xl text-cyan-neon"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-3">GPUs de Última Generación</h3>
+        <p class="text-sm text-slate-400">RTX 4000 y Radeon RX 7000, stock garantizado.</p>
+      </div>
+
+      <!-- Característica 2 -->
+      <div class="feature-card p-8 text-center">
+        <div class="feature-icon-wrap mx-auto mb-6">
+          <i class="fa-solid fa-gear text-2xl text-magenta-neon"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-3">Armado de PCs Personalizadas</h3>
+        <p class="text-sm text-slate-400">Asesoramos tu compra para maximizar FPS y rendimiento.</p>
+      </div>
+
+      <!-- Característica 3 -->
+      <div class="feature-card p-8 text-center">
+        <div class="feature-icon-wrap mx-auto mb-6">
+          <i class="fa-solid fa-truck-fast text-2xl text-cyan-neon"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-3">Envíos a Todo el País</h3>
+        <p class="text-sm text-slate-400">Logística exprés con seguimiento en tiempo real.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTOS (anclaje para navegación) ===================== -->
+<section id="productos" class="py-6 px-4 sm:px-6 lg:px-8">
+  <!-- Sección utilizada como ancla de navegación hacia el catálogo / servicios -->
+</section>
+
+<!-- ===================== TESTIMONIOS ===================== -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-magenta-neon text-sm font-semibold tracking-widest uppercase">Reseñas</span>
+      <h2 class="text-3xl sm:text-4xl font-bold mt-3">Lo Que Dicen Nuestros Clientes</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Testimonio 1 -->
+      <div class="testimonial-card p-8">
+        <i class="fa-solid fa-quote-left testimonial-quote-icon mb-4 block"></i>
+        <p class="text-slate-200 mb-6 leading-relaxed">
+          "Mundo Gaming me ayudó a armar mi PC para streaming. Llegó todo en perfecto estado y el rendimiento es brutal."
+        </p>
+        <p class="font-semibold text-cyan-neon">Carlos M. <span class="text-slate-400 font-normal">— Streamer</span></p>
+      </div>
+
+      <!-- Testimonio 2 -->
+      <div class="testimonial-card p-8">
+        <i class="fa-solid fa-quote-left testimonial-quote-icon mb-4 block"></i>
+        <p class="text-slate-200 mb-6 leading-relaxed">
+          "Los precios son imbatibles y la atención al cliente es de primera. Mi nuevo setup corre todo en Ultra."
+        </p>
+        <p class="font-semibold text-magenta-neon">Laura G. <span class="text-slate-400 font-normal">— Gamer Profesional</span></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FORMULARIO DE CONTACTO ===================== -->
+<section id="contacto" class="py-20 px-4 sm:px-6 lg:px-8 bg-[#0e1019]">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-cyan-neon text-sm font-semibold tracking-widest uppercase">Contacto</span>
+      <h2 class="text-3xl sm:text-4xl font-bold mt-3">¿Necesitas una Cotización Personalizada?</h2>
+    </div>
+
+    <!-- Formulario solo visual, sin backend -->
+    <form class="bg-card border-neon rounded-2xl p-6 sm:p-10 grid grid-cols-1 md:grid-cols-2 gap-6" onsubmit="return false;">
+
+      <div class="md:col-span-1">
+        <label class="block text-sm mb-2 text-slate-300">Nombre Completo</label>
+        <input type="text" placeholder="Tu nombre y apellido" class="form-input w-full rounded-lg px-4 py-3 text-sm">
+      </div>
+
+      <div class="md:col-span-1">
+        <label class="block text-sm mb-2 text-slate-300">Correo Electrónico</label>
+        <input type="email" placeholder="tucorreo@email.com" class="form-input w-full rounded-lg px-4 py-3 text-sm">
+      </div>
+
+      <div class="md:col-span-1">
+        <label class="block text-sm mb-2 text-slate-300">Teléfono</label>
+        <input type="text" placeholder="+54 9 11 0000 0000" class="form-input w-full rounded-lg px-4 py-3 text-sm">
+      </div>
+
+      <div class="md:col-span-1">
+        <label class="block text-sm mb-2 text-slate-300">Tipo de Requerimiento</label>
+        <input type="text" placeholder="Ej: Armado de PC, GPU, periféricos..." class="form-input w-full rounded-lg px-4 py-3 text-sm">
+      </div>
+
+      <div class="md:col-span-2">
+        <label class="block text-sm mb-2 text-slate-300">Mensaje / Requerimiento</label>
+        <textarea rows="4" placeholder="Contanos qué necesitás para tu setup..." class="form-input w-full rounded-lg px-4 py-3 text-sm resize-none"></textarea>
+      </div>
+
+      <div class="md:col-span-2 text-center mt-2">
+        <button type="submit" class="btn-submit px-10 py-3.5 rounded-full text-sm sm:text-base">
+          Enviar Mensaje <i class="fa-solid fa-paper-plane ml-2"></i>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-cyan-400/10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-gamepad text-xl text-cyan-neon"></i>
+      <span class="font-bold">Mundo <span class="text-magenta-neon">Gaming</span></span>
+    </div>
+
+    <p class="text-sm text-slate-500 text-center">
+      © 2026 Mundo Gaming. Todos los derechos reservados.
+    </p>
+
+    <!-- Redes sociales -->
+    <div class="flex items-center gap-3">
+      <a href="#" aria-label="Facebook" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter / X" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" aria-label="YouTube" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
