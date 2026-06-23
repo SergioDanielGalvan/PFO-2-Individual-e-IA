@@ -11,7 +11,7 @@ Proyecto individual para la Práctica Formativa Obligatoria 2. El despliegue uni
 
 ## Deploy unificado
 
-- Link de Vercel: Completar cuando el proyecto esté publicado
+- Link de Vercel: https://pfo-2-individual-e-ia.vercel.app/
 
 ## Agentes utilizados
 
